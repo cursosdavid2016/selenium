@@ -18,7 +18,7 @@ public class SwitchCalculator_23 {
 
     static void showMenu() {
         System.out.println(
-                "° option: A/a: add \n" +
+                        "° option: A/a: add \n" +
                         "° option: B/b: subtract \n" +
                         "° option: C/c: multiply \n" +
                         "° option: D/d: divide \n" +
