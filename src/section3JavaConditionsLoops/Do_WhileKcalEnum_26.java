@@ -2,32 +2,35 @@ package section3JavaConditionsLoops;
 
 import java.util.Scanner;
 
-public class SwitchKcalEnum {
+public class Do_WhileKcalEnum_26 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        menuKcal();
-        String day = ScannerManager.leerString(scanner,"enter week day");
-        scanner.close();
+        String day;
+        do {
+            menuKcal();
+            day = ScannerManager.leerString(scanner,"enter week day");
+            printResult(day,calcKcal(Weekday.valueOf(day)));
+        }while (calcKcal(Weekday.valueOf(day)) != -1);
 
-        printResult(day,calcKcal(Weekday.valueOf(day)));
+        scanner.close();
     }
+
 
     static void menuKcal() {
         System.out.println(
                 "° option: monday \n" +
-                "° option: tuesday \n" +
-                "° option: wednesday \n" +
-                "° option: thursday \n" +
-                "° option: friday \n" +
-                "° option: saturday \n" +
-                "° option: sunday \n"
+                        "° option: tuesday \n" +
+                        "° option: wednesday \n" +
+                        "° option: thursday \n" +
+                        "° option: friday \n" +
+                        "° option: saturday \n" +
+                        "° option: sunday \n" +
+                        "° option: exit \n"
         );
-
-
     }
 
     static int calcKcal(Weekday weekday){
-        final int kcal = switch (weekday){
+        final int  kcal = switch (weekday){
             case monday -> 350;
             case tuesday -> 420;
             case wednesday -> 220;
@@ -35,6 +38,7 @@ public class SwitchKcalEnum {
             case friday -> 125;
             case saturday -> 250;
             case sunday -> 100;
+            case exit -> -1;
         };
         return kcal;
     }
@@ -45,6 +49,7 @@ public class SwitchKcalEnum {
         }else System.out.println("enter a correct day");
 
     }
+
     enum Weekday {
         monday,
         tuesday,
@@ -52,6 +57,7 @@ public class SwitchKcalEnum {
         thursday,
         friday,
         saturday,
-        sunday
+        sunday,
+        exit
     }
 }
