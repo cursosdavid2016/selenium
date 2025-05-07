@@ -14,12 +14,8 @@ public class oneArray_Try_Catch_35 {
         do {
             showArray(array);
             index = ScannerManager.leerInt(scanner,"enter index or insert '-1' to exit");
-            try {
-                showElement(index,array);
-            }catch (IndexOutOfBoundsException indexOutOfBoundsException){
-                System.out.println("you can access to this position");
-                System.err.printf("IndexOutOfBoundsException %s%n", indexOutOfBoundsException.getMessage());
-            }
+            showElement(index,array);
+
 
 
         }while (index != -1);
@@ -31,7 +27,14 @@ public class oneArray_Try_Catch_35 {
     }
 
     static void showElement(int i, int[] array){
-        System.out.printf("for the position %s the value is: %s%n",i,array[i]);
+        try {
+            final int element = array[i];
+            System.out.printf("for the position %s the value is: %s%n",i,array[i]);
+        }catch (IndexOutOfBoundsException indexOutOfBoundsException){
+            System.out.println("you can access to this position");
+            System.err.printf("IndexOutOfBoundsException %s%n", indexOutOfBoundsException.getMessage());
+        }
+
     }
 
 }
