@@ -5,24 +5,26 @@ import java.util.Scanner;
 public class ThreadSleep_35 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int readNumber = ScannerManager.leerInt(scanner, "enter a value between");
-
-        showCont(readNumber);
+        final int number = ScannerManager.leerInt(scanner,"enter a number between 1 - 5");
+        showCont(number);
     }
 
-    static void hold(long n){
+    static void waitingMethod(long n){
+
         try {
             Thread.sleep(n * 1000);
         }catch (InterruptedException interruptedException){
-            System.err.printf("InterruptedException %s%n",interruptedException.getMessage());
-            System.out.println("wait error");
+            System.out.println("error when waiting");
+            System.err.printf("InterruptedException %s%n", interruptedException.getMessage());
         }
+
+
     }
 
     static void showCont(int n){
         for (int i = 0; i < n; i++) {
             System.out.printf("%d%n",i+1);
-            hold(1);
+            waitingMethod(1);
         }
     }
 }
